@@ -26,6 +26,8 @@
     </string>
 
     <!-- Add Tasks -->
-    <string name="task_name">Name of Task</string>
+    <string name="task_name">Task Name</string>
     <string name="due_date">Due Date and Time</string>
+    <string name="content">Task Description</string>
+    <string name="add_task">Add Task</string>
 </resources>
