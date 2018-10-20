@@ -1,5 +1,6 @@
 package com.example.mgcurioso.hackathon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         //! sample only
         if (id == R.id.nav_task) {
-            newFragment = new StudentFragment();
+            startActivity(new Intent(this, AddTask.class));
         } else if (id == R.id.nav_allowance) {
             newFragment = new StudentFragment();
         } else if (id == R.id.nav_achievements) {
