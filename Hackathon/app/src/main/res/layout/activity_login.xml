@@ -22,11 +22,11 @@
                     android:layout_marginTop="8dp">
 
                     <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="130dp"
-                        android:layout_height="137dp"
+                        android:id="@+id/imageView2"
+                        android:layout_width="127dp"
+                        android:layout_height="125dp"
                         android:layout_centerInParent="true"
-                        app:srcCompat="@drawable/lazypush" />
+                        app:srcCompat="@drawable/logo" />
                 </RelativeLayout>
 
                 <android.support.design.widget.TextInputLayout
