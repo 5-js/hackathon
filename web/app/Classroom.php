@@ -27,6 +27,6 @@ class Classroom extends Model
         return [
             'title'         => 'required',
             'description'   => 'required'
-        ]
+        ];
     }
 }
