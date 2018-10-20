@@ -85,6 +85,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_allowance) {
 
+        } else if (id == R.id.nav_achievements) {
+
+        } else if (id == R.id.nav_classes) {
+
         } else if (id == R.id.nav_profile) {
 
         } else if (id == R.id.nav_logout) {
