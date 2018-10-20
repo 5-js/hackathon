@@ -19,7 +19,7 @@ class Classroom extends Model
 
     public function students()
     {
-        return $this->hasMany('App\User');
+        return $this->belongsToMany('App\User', 'classroom_user_relation', 'class_id', 'user_id');
     }
 
     public static function rules()
