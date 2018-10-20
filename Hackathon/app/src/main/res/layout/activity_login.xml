@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="130dp"
-            android:layout_height="137dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerInParent="true"
             app:srcCompat="@drawable/lazypush" />
     </RelativeLayout>
