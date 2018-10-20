@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.mgcurioso.hackathon">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission
         android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
@@ -31,7 +32,7 @@
             android:name=".AddTask"
             android:label="@string/add_task"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".StudentAchievementActivity"></activity>
+        <activity android:name=".StudentAchievementActivity"/>
     </application>
 
 </manifest>
