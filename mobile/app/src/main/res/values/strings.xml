@@ -1,4 +1,12 @@
 <resources>
-    <string name="app_name">mobile</string>
+    <string name="app_name">WoGo</string>
+
     <string name="action_settings">Settings</string>
+
+    <!-- hints -->
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+
+    <!-- actions -->
+    <string name="action_login">Login</string>
 </resources>
