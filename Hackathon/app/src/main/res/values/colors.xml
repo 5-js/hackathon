@@ -5,4 +5,5 @@
     <color name="colorAccent">#f6711d</color>
 
     <color name="black_overlay">#66000000</color>
+    <color name="LazyPush">#f6711d</color>
 </resources>
