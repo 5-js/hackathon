@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mgcurioso.hackathon.R;
+import com.example.mgcurioso.hackathon.interfaces.Titlable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +17,7 @@ import com.example.mgcurioso.hackathon.R;
  * {@link StudentFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class StudentFragment extends Fragment {
+public class StudentFragment extends Fragment implements Titlable {
 
     private OnFragmentInteractionListener mListener;
 
@@ -54,6 +55,12 @@ public class StudentFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    // Titlable
+    @Override
+    public String getTitle() {
+        return "Dashboard";
     }
 
     /**
