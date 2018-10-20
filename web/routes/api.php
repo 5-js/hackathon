@@ -29,3 +29,5 @@ Route::get('/task/{id}', 'TaskController@show');
 Route::post('/task/{id}', 'TaskController@update');
 Route::post('/task/{id}/delete', 'TaskController@destroy');
 
+// BADGES
+

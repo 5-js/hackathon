@@ -21,4 +21,12 @@ class Classroom extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    public static function rules()
+    {
+        return [
+            'title'         => 'required',
+            'description'   => 'required'
+        ];
+    }
 }
