@@ -31,6 +31,7 @@
             android:name=".AddTask"
             android:label="@string/add_task"
             android:parentActivityName=".MainActivity" />
+        <activity android:name=".StudentAchievementActivity"></activity>
     </application>
 
 </manifest>
