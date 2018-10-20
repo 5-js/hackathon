@@ -18,7 +18,7 @@
             android:title="Achievements" />
         <item
             android:id="@+id/nav_classes"
-            android:icon="@mipmap/classses"
+            android:icon="@mipmap/classes"
             android:title="Classes" />
     </group>
 
@@ -30,6 +30,7 @@
                 android:title="Settings" />
             <item
                 android:id="@+id/nav_logout"
+                android:icon="@mipmap/logout"
                 android:title="Log Out" />
         </menu>
     </item>
