@@ -13,7 +13,7 @@ class TaskController extends Controller
 
     public function index($id)
     {
-        return $this->respond([ 'tasks' => Task::where('user_id',$id)->latest()->get()], 'done');
+        return $this->respond([ 'tasks' => Task::where('user_id',$id)->latest()->get()], 'ok');
     }
 
     public function store(Request $request)
@@ -34,7 +34,7 @@ class TaskController extends Controller
     {
         if ( !$this->taskExists($id) )
             return $this->respond([ 'message'  => 'Whoops, task not found!'], 'not_found');
-        return $this->respond(['task' => Task::find($id)], 'done');
+        return $this->respond(['task' => Task::find($id)], 'ok');
     }
 
     public function update(Request $request, $id)
@@ -55,7 +55,7 @@ class TaskController extends Controller
             'user_id'  => Auth::id()
         ]);
 
-        return $this->respond([ 'message' => 'Task has been updated!'], 'done');
+        return $this->respond([ 'message' => 'Task has been updated!'], 'ok');
     }
 
     public function destroy($id)
@@ -64,7 +64,7 @@ class TaskController extends Controller
             return $this->respond([ 'message' => 'Whoops, task is not found!'], 'not_found');
         
         Task::where('id', $id)->destroy();
-        return $this->respond([ 'message' => 'Task has been deleted!'], 'done');
+        return $this->respond([ 'message' => 'Task has been deleted!'], 'ok');
     }
 
     private function taskExists($id)

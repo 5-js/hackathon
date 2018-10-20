@@ -13,7 +13,7 @@ class ClassroomController extends Controller
 
     public function index()
     {
-        return $this->respond(['classrooms' => Classroom::where('user_id', Auth::id())->latest()->get()] , 'done');    
+        return $this->respond(['classrooms' => Classroom::where('user_id', Auth::id())->latest()->get()] , 'ok');    
     }
 
     public function store(Request $request)
@@ -37,7 +37,7 @@ class ClassroomController extends Controller
     {
        if (!$this->classRoomExists($id))
             return $this->respond(['message' => 'Whoops, class does not exists!'], 'not_found');
-       return $this->respond(['classroom' => Classroom::find($id)], 'done');
+       return $this->respond(['classroom' => Classroom::find($id)], 'ok');
     }
 
     public function update(Request $request, $id)

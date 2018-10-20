@@ -15,14 +15,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        return $this->respond(['users' => User::all()], 'done');
+        return $this->respond(['users' => User::all()], 'ok');
     }
 
     public function show($id)
     {
         if (!$this->userExists($id))
             return $this->respond(['message' => 'Whoops! user does not exists'], 'not_found');
-        return $this->respond(['user' => User::find($id)], 'done');
+        return $this->respond(['user' => User::find($id)], 'ok');
     }
 
     public function update(Request $request, $id)
