@@ -1,7 +1,17 @@
 <resources>
-    <string name="app_name">mobile</string>
+    <string name="app_name">WoGo</string>
+
     <string name="action_settings">Settings</string>
 
+<<<<<<< HEAD
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+=======
+    <!-- hints -->
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+
+    <!-- actions -->
+    <string name="action_login">Login</string>
+>>>>>>> def1db41b3883fde625841c7cc56384e4bf55898
 </resources>
