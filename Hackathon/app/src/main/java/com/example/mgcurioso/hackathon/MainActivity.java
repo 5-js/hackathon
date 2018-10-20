@@ -100,6 +100,10 @@ public class MainActivity extends AppCompatActivity
             newFragment = new StudentFragment();
         } else if (id == R.id.nav_allowance) {
             newFragment = new StudentFragment();
+        } else if (id == R.id.nav_achievements) {
+            newFragment = new StudentFragment();
+        } else if (id == R.id.nav_classes) {
+            newFragment = new StudentFragment();
         } else if (id == R.id.nav_profile) {
             newFragment = new StudentFragment();
         } else if (id == R.id.nav_logout) {

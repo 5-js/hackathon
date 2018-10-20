@@ -10,13 +10,19 @@
         <item
             android:id="@+id/nav_allowance"
             android:title="Allowance" />
+        <item
+            android:id="@+id/nav_achievements"
+            android:title="Achievements" />
+        <item
+            android:id="@+id/nav_classes"
+            android:title="Classes" />
     </group>
 
     <item android:title="Account">
         <menu>
             <item
                 android:id="@+id/nav_profile"
-                android:title="Profile" />
+                android:title="Settings" />
             <item
                 android:id="@+id/nav_logout"
                 android:title="Log Out" />
