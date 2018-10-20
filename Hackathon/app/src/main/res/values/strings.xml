@@ -24,4 +24,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!-- Add Tasks -->
+    <string name="task_name">Name of Task</string>
+    <string name="due_date">Due Date and Time</string>
 </resources>
