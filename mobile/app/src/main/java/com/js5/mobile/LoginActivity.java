@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements Api.OnRespondLis
                     params.put("password", txtPassword.getText());
 
                     Api.get(view.getContext())
-                            .setUrl(UrlsList.USERS_URL)
+                            .setUrl(UrlsList.LOGIN_URL)
                             .request(params);
                 } catch (Exception e) {
                     Snackbar.make(view, "Unable to login.", Snackbar.LENGTH_LONG).show();
