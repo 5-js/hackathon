@@ -30,4 +30,6 @@
     <string name="due_date">Due Date and Time</string>
     <string name="content">Task Description</string>
     <string name="add_task">Add Task</string>
+    <string name="browse_date">Select Date</string>
+    <string name="browse_time">Select Time</string>
 </resources>
