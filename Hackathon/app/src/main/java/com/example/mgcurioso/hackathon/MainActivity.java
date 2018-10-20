@@ -106,9 +106,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_classes) {
             newFragment = new StudentFragment();
         } else if (id == R.id.nav_settings) {
-            newFragment = new StudentFragment();
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
         } else if (id == R.id.nav_logout) {
-            
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+
         } else {
             Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show();
         }
