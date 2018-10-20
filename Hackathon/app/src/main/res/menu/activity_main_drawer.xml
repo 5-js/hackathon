@@ -6,22 +6,27 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_task"
+            android:icon="@mipmap/assignment"
             android:title="Task" />
         <item
             android:id="@+id/nav_allowance"
+            android:icon="@mipmap/wallet"
             android:title="Allowance" />
         <item
             android:id="@+id/nav_achievements"
+            android:icon="@mipmap/achievement"
             android:title="Achievements" />
         <item
             android:id="@+id/nav_classes"
+            android:icon="@mipmap/class"
             android:title="Classes" />
     </group>
 
     <item android:title="Account">
         <menu>
             <item
-                android:id="@+id/nav_profile"
+                android:id="@+id/nav_settings"
+                android:icon="@mipmap/settings"
                 android:title="Settings" />
             <item
                 android:id="@+id/nav_logout"
