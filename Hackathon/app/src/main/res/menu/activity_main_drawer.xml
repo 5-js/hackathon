@@ -18,7 +18,7 @@
             android:title="Achievements" />
         <item
             android:id="@+id/nav_classes"
-            android:icon="@mipmap/class"
+            android:icon="@mipmap/classses"
             android:title="Classes" />
     </group>
 
