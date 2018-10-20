@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<<<<<<< HEAD
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
     <color name="WoGo">#f6711d</color>
     <color name="WoGoGray">#e6e6e6</color>
-=======
     <color name="colorPrimary">#F6711D</color>
     <color name="colorPrimaryDark">#E7620E</color>
     <color name="colorAccent">#F6711D</color>
->>>>>>> def1db41b3883fde625841c7cc56384e4bf55898
 </resources>

@@ -13,14 +13,14 @@ import com.js5.mobile.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link DashboardFragment.OnFragmentInteractionListener} interface
+ * {@link DashboardFragmentParent.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class DashboardFragment extends Fragment {
+public class DashboardFragmentParent extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public DashboardFragment() {
+    public DashboardFragmentParent() {
         // Required empty public constructor
     }
 
@@ -29,7 +29,7 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        return inflater.inflate(R.layout.fragment_dashboard_fragment_parent, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

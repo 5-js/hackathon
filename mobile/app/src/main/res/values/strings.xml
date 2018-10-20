@@ -2,16 +2,20 @@
     <string name="app_name">WoGo</string>
 
     <string name="action_settings">Settings</string>
-
-<<<<<<< HEAD
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-=======
+
     <!-- hints -->
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
 
     <!-- actions -->
     <string name="action_login">Login</string>
->>>>>>> def1db41b3883fde625841c7cc56384e4bf55898
+    <string name="title_activity_side_panel">SidePanelActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    >>>>>>> def1db41b3883fde625841c7cc56384e4bf55898
 </resources>

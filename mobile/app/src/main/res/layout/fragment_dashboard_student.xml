@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.DashboardFragment"
+    tools:context=".fragments.DashboardFragmentStudent"
     tools:layout_editor_absoluteY="81dp">
 
     <!-- TODO: Update blank fragment layout -->
@@ -27,7 +27,6 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/dashboard_card_accomplishments"
-            padding
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
