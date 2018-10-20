@@ -11,9 +11,9 @@ class TaskController extends Controller
 {
     use API;
 
-    public function index()
+    public function index($id)
     {
-        return $this->respond(Task::all(), 'done');
+        return $this->respond([ 'tasks' => Task::where('user_id',$id)->latest()->get()], 'done');
     }
 
     public function store(Request $request)
@@ -21,7 +21,13 @@ class TaskController extends Controller
         
         $request->validate(Task::rules());
 
-        return $this->respond(['tasks' => Task::create($request->all())], 'created');
+        return $this->respond(['task' => Task::create([
+            'title'    => $request->title, 
+            'content'  => $request->content, 
+            'due_date' => $request->due_date, 
+            'class_id' => $request->has('class_id')? $request->class_id : null, 
+            'user_id'  => Auth::id()
+        ])], 'created');
     }
 
     public function show($id)
@@ -33,7 +39,7 @@ class TaskController extends Controller
 
     public function update(Request $request, $id)
     {
-        if ( !$request->has('class_id') ||  !$this->classRoomExists($request->class_id)) 
+        if ( $request->has('class_id') && !$this->classRoomExists($request->class_id)) 
             return $this->respond([ 'message' => 'Whoops, class is not found!'], 'not_found');
 
         if (!$this->taskExists($id))
@@ -41,7 +47,13 @@ class TaskController extends Controller
 
         $request->validate(Task::rule());
 
-        Task::where('id',$id)->update($request->all());
+        Task::where('id',$id)->update([
+            'title'    => $request->title, 
+            'content'  => $request->content, 
+            'due_date' => $request->due_date, 
+            'class_id' => $request->has('class_id')? $request->class_id : null, 
+            'user_id'  => Auth::id()
+        ]);
 
         return $this->respond([ 'message' => 'Task has been updated!'], 'done');
     }
