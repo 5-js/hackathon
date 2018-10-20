@@ -3,6 +3,9 @@ package com.example.mgcurioso.hackathon;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,8 +17,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.mgcurioso.hackathon.fragments.StudentFragment;
+import com.example.mgcurioso.hackathon.interfaces.Titlable;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static Fragment CURR_FRAGMENT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //! set Fragment here!
+        // if fragment not set
+        // use default fragment (should depend on role)
+        setFragment(CURR_FRAGMENT != null ? CURR_FRAGMENT : new StudentFragment());
     }
 
     @Override
@@ -78,23 +91,58 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
+        Fragment newFragment = null;
+
         int id = item.getItemId();
-
+        //! sample only
         if (id == R.id.nav_task) {
-
+            newFragment = new StudentFragment();
         } else if (id == R.id.nav_allowance) {
-
+            newFragment = new StudentFragment();
         } else if (id == R.id.nav_profile) {
-
+            newFragment = new StudentFragment();
         } else if (id == R.id.nav_logout) {
-
+            
         } else {
             Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show();
         }
 
+        // set fragment here
+        setFragment(newFragment);
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    // methods
+    private void setFragment(Fragment newFragment) {
+        if (newFragment == null) {
+            return;
+        }
+
+        // newFragment should implement Titlable first!
+        if (!(newFragment instanceof Titlable)) {
+            throw new RuntimeException(newFragment.toString() + " must implement Titlable");
+        }
+
+        final FragmentManager manager = getSupportFragmentManager();
+        final FragmentTransaction transaction = manager.beginTransaction();
+
+        // if no curr fragment, then add it
+        // else, just replace it
+        if (CURR_FRAGMENT == null) {
+            transaction.add(R.id.main_root_layout, newFragment);
+        } else {
+            transaction.replace(R.id.main_root_layout, newFragment);
+        }
+
+        // new then becomes the current! :)
+        CURR_FRAGMENT = newFragment;
+
+        // set dat title
+        setTitle(((Titlable) newFragment).getTitle());
     }
 }
