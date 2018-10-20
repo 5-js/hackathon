@@ -27,4 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isTeacher()
+    {
+        return $this->role == 1? true : false;
+    }
 }
