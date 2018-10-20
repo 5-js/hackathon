@@ -29,5 +29,13 @@ Route::get('/task/{id}', 'TaskController@show');
 Route::post('/task/{id}', 'TaskController@update');
 Route::post('/task/{id}/delete', 'TaskController@destroy');
 
-// BADGES
+// CLASSROOM
+Route::get('/classes', 'ClassroomController@index');
+Route::post('/classes', 'ClassroomController@store');
+Route::get('/class/{id}', 'ClassroomController@show');
+Route::post('/class/{id}', 'ClassroomController@update');
+Route::post('/class/{id}/delete', 'ClassroomController@destroy');
+Route::post('/class/{id}/student/add', 'ClassroomController@addStudent');
+Route::post('/class/{id}/student/delete', 'ClassroomController@deleteStudent');
+
 
