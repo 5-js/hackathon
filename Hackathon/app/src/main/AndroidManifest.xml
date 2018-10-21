@@ -21,7 +21,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -39,6 +38,10 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".Classes"
+            android:label="Classes"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".UsageStat" />
         <activity android:name=".UStats" />
         <activity android:name=".NotificationActivity"></activity>
