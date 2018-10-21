@@ -7,14 +7,15 @@ use Auth;
 use App\Traits\API;
 use App\Task;
 use App\Classroom;
-use App\TaskClassStudent;
+use App\Http\Resources\Task as TaskResource;
+
 class TaskController extends Controller
 {
     use API;
 
     public function index($id)
     {
-        return $this->respond([ 'tasks' => Task::where('user_id',$id)->latest()->get()], 'ok');
+        return $this->respond([ 'tasks' => TaskResource::collection(Task::where('user_id',$id)->latest()->get())], 'ok');
     }
 
     public function store(Request $request)
@@ -44,7 +45,7 @@ class TaskController extends Controller
             ]);
         }
 
-        return $this->respond(['task' => $task], 'created');
+        return $this->respond(['task' => new TaskResource($task)], 'created');
     }
 
     public function changeStatus($id, Request $request)
@@ -67,7 +68,7 @@ class TaskController extends Controller
     {
         if ( !$this->taskExists($id) )
             return $this->respond([ 'message'  => 'Whoops, task not found!'], 'not_found');
-        return $this->respond(['task' => Task::find($id)], 'ok');
+        return $this->respond(['task' => new TaskResource(Task::find($id))], 'ok');
     }
 
     public function update(Request $request, $id)

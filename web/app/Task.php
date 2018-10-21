@@ -12,7 +12,7 @@ class Task extends Model
 
     public function classes()
     {
-        return $this->belongsTo('App\Class', 'class_id', 'id');
+        return $this->belongsTo('App\Classroom', 'class_id', 'id');
     }
 
     protected $dates = [
@@ -26,5 +26,9 @@ class Task extends Model
             'content'   => 'required',
             'dude_date' => 'required'
         ];
+    }
+    public function student()
+    {
+        return $this->belongsTo('App\User','user_id','id');
     }
 }

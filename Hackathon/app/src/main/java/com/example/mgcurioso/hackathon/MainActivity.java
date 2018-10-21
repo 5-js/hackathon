@@ -3,26 +3,32 @@ package com.example.mgcurioso.hackathon;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.example.mgcurioso.hackathon.fragments.StudentFragment;
+import com.example.mgcurioso.hackathon.fragments.TasksFragment;
 import com.example.mgcurioso.hackathon.interfaces.Titlable;
+import com.example.mgcurioso.hackathon.utils.Api;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, Api.OnRespondListener, StudentFragment.OnFragmentInteractionListener {
 
     private static Fragment CURR_FRAGMENT;
 
@@ -98,13 +104,15 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         //! sample only
         if (id == R.id.nav_task) {
-            startActivity(new Intent(this, AddTask.class));
+            newFragment = new TasksFragment();
+            /*startActivity(new Intent(this, AddTask.class));*/
         } else if (id == R.id.nav_allowance) {
             newFragment = new StudentFragment();
         } else if (id == R.id.nav_achievements) {
             newFragment = new StudentFragment();
         } else if (id == R.id.nav_classes) {
-            newFragment = new StudentFragment();
+            startActivity(new Intent(MainActivity.this, Classes.class));
+            /* startActivity(new Intent(MainActivity.this, UsageStat.class)); */
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(MainActivity.this, SettingsActivity.class));
         } else if (id == R.id.nav_logout) {
@@ -142,14 +150,37 @@ public class MainActivity extends AppCompatActivity
         // else, just replace it
         if (CURR_FRAGMENT == null) {
             transaction.add(R.id.main_root_layout, newFragment);
+            Log.d("tagX", "if ");
         } else {
             transaction.replace(R.id.main_root_layout, newFragment);
+            Log.d("tagX", "else ");
         }
+
+        transaction.commit();
 
         // new then becomes the current! :)
         CURR_FRAGMENT = newFragment;
 
         // set dat title
         setTitle(((Titlable) newFragment).getTitle());
+    }
+
+    @Override
+    public void onResponse(String tag, JSONObject response) throws JSONException {
+        /*Toast.makeText(this, response.toString(), Toast.LENGTH_LONG).show();*/
+        Toast.makeText(this, "asd", Toast.LENGTH_LONG).show();
+
+        Log.d("tagX", "onErrorResponse: ");
+    }
+
+    @Override
+    public void onErrorResponse(String tag, VolleyError error) throws JSONException {
+        Log.d("tagX", "onErrorResponse: " + error.getMessage());
+    }
+
+    @Override
+    public void onException(JSONException e) {
+        e.printStackTrace();
+
     }
 }
