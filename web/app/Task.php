@@ -15,16 +15,11 @@ class Task extends Model
         return $this->belongsTo('App\Classroom', 'class_id', 'id');
     }
 
-    protected $dates = [
-        'due_date'
-    ];
-
     public static function rules()
     {
         return [
             'title'     => 'required',
             'content'   => 'required',
-            'dude_date' => 'required'
         ];
     }
     public function student()
