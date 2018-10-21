@@ -1,5 +1,9 @@
 package com.example.mgcurioso.hackathon;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -12,7 +16,16 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-public class AddTask extends AppCompatActivity implements View.OnClickListener{
+import com.android.volley.VolleyError;
+import com.example.mgcurioso.hackathon.config.UrlsList;
+import com.example.mgcurioso.hackathon.fragments.StudentFragment;
+import com.example.mgcurioso.hackathon.interfaces.Titlable;
+import com.example.mgcurioso.hackathon.utils.Api;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class AddTask extends AppCompatActivity implements Api.OnRespondListener, View.OnClickListener {
 
     Button btnDatePicker, btnTimePicker;
     TextInputEditText taskName, taskDesc, taskDate, taskTime;
@@ -84,5 +97,27 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener{
                     }, mHour, mMinute, false);
             timePickerDialog.show();
         }
+    }
+
+    public void addTask() {
+        Api.post(this)
+                .setUrl(UrlsList.TASKS_URL)
+                .request();
+    }
+
+    // OnRespondListener
+    @Override
+    public void onResponse(String tag, JSONObject response) throws JSONException {
+
+    }
+
+    @Override
+    public void onErrorResponse(String tag, VolleyError error) throws JSONException {
+
+    }
+
+    @Override
+    public void onException(JSONException e) {
+
     }
 }
