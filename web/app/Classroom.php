@@ -22,6 +22,11 @@ class Classroom extends Model
         return $this->belongsToMany('App\User', 'classroom_user_relation', 'class_id', 'user_id');
     }
 
+    public function tasks()
+    {
+        return $this->hasMany('App\Task');
+    }
+
     public static function rules()
     {
         return [
