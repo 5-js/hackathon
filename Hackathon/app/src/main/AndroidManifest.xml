@@ -4,8 +4,10 @@
     package="com.example.mgcurioso.hackathon">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -38,7 +40,8 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity android:name=".UsageStat" />
-        <activity android:name=".UStats"></activity>
+        <activity android:name=".UStats" />
+        <activity android:name=".NotificationActivity"></activity>
     </application>
 
 </manifest>
