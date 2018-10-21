@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.example.mgcurioso.hackathon.config.UrlsList;
+import com.example.mgcurioso.hackathon.items.User;
 import com.example.mgcurioso.hackathon.utils.Api;
 
 import org.json.JSONException;
@@ -23,8 +24,6 @@ import org.json.JSONObject;
 import java.util.Calendar;
 
 public class AddTask extends AppCompatActivity implements Api.OnRespondListener, View.OnClickListener {
-
-    final int USER_ID = 1;
 
     Button btnDatePicker, btnTimePicker;
     TextInputEditText taskName, taskDesc, taskDate, taskTime;
@@ -102,12 +101,14 @@ public class AddTask extends AppCompatActivity implements Api.OnRespondListener,
 
     public void addTask(View view) {
         try {
+            final User user = User.getSavedUser(this);
+
             JSONObject obj = new JSONObject();
             obj.put("title", taskName.getText().toString());
             obj.put("content", taskDesc.getText().toString());
             obj.put("date", taskDate.getText().toString());
             obj.put("time", taskTime.getText().toString());
-            obj.put("user_id", USER_ID);
+            obj.put("user_id", user.getId());
             obj.put("class_id", null);
             Api.post(this).setUrl(UrlsList.TASKS_URL).request(obj).setTag("addTaskTag");
 
