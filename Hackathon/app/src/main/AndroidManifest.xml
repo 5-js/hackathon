@@ -4,19 +4,18 @@
     package="com.example.mgcurioso.hackathon">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission
-        android:name="android.permission.PACKAGE_USAGE_STATS"
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/smalllogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/smalllogo
-"
+        android:roundIcon="@mipmap/smalllogo "
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreenActivity"
+        <activity
+            android:name=".SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +36,9 @@
         <activity android:name=".StudentAchievementActivity" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"/>
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".UsageStat" />
+        <activity android:name=".UStats"></activity>
     </application>
 
 </manifest>
