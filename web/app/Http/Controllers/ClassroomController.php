@@ -7,6 +7,7 @@ use Auth;
 use App\User;
 use App\Classroom;
 use App\Traits\API;
+use App\Http\Resources\Classroom as ClassroomResource;
 
 class ClassroomController extends Controller
 {
@@ -14,7 +15,7 @@ class ClassroomController extends Controller
 
     public function index()
     {
-        return $this->respond(['classrooms' => Classroom::where('user_id', Auth::id())->latest()->get()] , 'ok');    
+        return $this->respond(['classrooms' => ClassroomResource::collection(Classroom::where('user_id', Auth::id())->latest()->get())] , 'ok');    
     }
 
     public function store(Request $request)
@@ -70,7 +71,7 @@ class ClassroomController extends Controller
        if (!$this->classRoomExists($id))
             return $this->respond(['message' => 'Whoops, class does not exists!'], 'not_found');
 
-       return $this->respond(['classroom' => Classroom::find($id)], 'ok');
+       return $this->respond(['classroom' => new ClassroomResource(Classroom::find($id))], 'ok');
     }
 
     public function update(Request $request, $id)
