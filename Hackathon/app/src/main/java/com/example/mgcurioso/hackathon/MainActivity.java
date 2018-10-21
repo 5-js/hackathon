@@ -24,6 +24,7 @@ import com.example.mgcurioso.hackathon.fragments.StudentFragment;
 import com.example.mgcurioso.hackathon.fragments.TasksFragment;
 import com.example.mgcurioso.hackathon.interfaces.Titlable;
 import com.example.mgcurioso.hackathon.items.Task;
+import com.example.mgcurioso.hackathon.items.User;
 import com.example.mgcurioso.hackathon.utils.Api;
 
 import org.json.JSONArray;
@@ -39,6 +40,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // check if user exists
+        User user = null;
+        try {
+            user = User.getSavedUser(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (user == null) {
+            back();
+            return;
+        }
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -47,8 +62,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if(CURR_FRAGMENT instanceof TasksFragment){
+                    startActivity(new Intent(MainActivity.this, AddTask.class));
+                }
             }
         });
 
@@ -65,6 +81,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // if fragment not set
         // use default fragment (should depend on role)
         setFragment(CURR_FRAGMENT != null ? CURR_FRAGMENT : new StudentFragment());
+
+        // if did log in
+        if (User.didLogin(this)) {
+            Snackbar.make(fab, "Login successfully.", Snackbar.LENGTH_LONG).show();
+        }
+    }
+
+    private void back() {
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
+    }
+
+    private void logout() {
+        User.removeSavedUser(this);
+        back();
     }
 
     @Override
@@ -120,9 +151,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(MainActivity.this, SettingsActivity.class));
         } else if (id == R.id.nav_logout) {
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            finish();
-
+            logout();
         } else {
             Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show();
         }

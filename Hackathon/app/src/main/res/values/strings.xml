@@ -38,7 +38,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="add_task_btn">+ Add Task</string>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1142e8fe7f880859c7897e148b0a927e98b24330
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->

@@ -13,15 +13,16 @@ import android.widget.ListView;
 import com.example.mgcurioso.hackathon.R;
 import com.example.mgcurioso.hackathon.interfaces.Titlable;
 import com.example.mgcurioso.hackathon.items.Task;
+import com.example.mgcurioso.hackathon.items.User;
 import com.example.mgcurioso.hackathon.utils.Api;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
 import static com.example.mgcurioso.hackathon.config.UrlsList.TASKS_URL;
 
 public class TasksFragment extends Fragment implements Titlable {
-
-    private static final int USER_ID = 2;
 
     public TasksFragment() {
         // Required empty public constructor
@@ -31,8 +32,15 @@ public class TasksFragment extends Fragment implements Titlable {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_tasks, container, false);
 
+        int userId = 0;
+        try {
+            userId = User.getSavedUser(getContext()).getId();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         // get tasks on db
-        Api.get(getContext()).setTag("fetchTasks").setUrl(TASKS_URL + USER_ID).request();
+        Api.get(getContext()).setTag("fetchTasks").setUrl(TASKS_URL + userId).request();
 
         // Inflate the layout for this fragment
         return view;

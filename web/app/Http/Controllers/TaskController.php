@@ -20,9 +20,7 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        
-        $request->validate(Task::rules());
-
+        $this->validate($request,Task::rules());
         if ($request->has('class_id')) {
             $class = Classroom::find($request->class_id);
 
@@ -30,7 +28,7 @@ class TaskController extends Controller
                 $task = Task::create([
                     'title'    => $request->title, 
                     'content'  => $request->content, 
-                    'due_date' => $request->due_date, 
+                    'due_date' => date('Y-m-d H:i:s.u',strtotime($request->date." ".$request->time)), 
                     'class_id' => $request->class_id, 
                     'user_id'  => $student->id
                 ]);
@@ -39,12 +37,11 @@ class TaskController extends Controller
             $task = Task::create([
                 'title'    => $request->title, 
                 'content'  => $request->content, 
-                'due_date' => $request->due_date, 
+                'due_date' => date('Y-m-d H:i:s.u',strtotime($request->date." ".$request->time)), 
                 'class_id' => null, 
-                'user_id'  => Auth::id()
+                'user_id'  => $request->user_id
             ]);
         }
-
         return $this->respond(['task' => new TaskResource($task)], 'created');
     }
 

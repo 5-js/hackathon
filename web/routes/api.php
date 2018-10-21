@@ -13,9 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+// LOGIN
+Route::post('/login', 'APILoginController@login');
 
 // USERS
 Route::get('/users', 'UserController@index');
@@ -23,8 +26,8 @@ Route::get('/user/{id}', 'UserController@show');
 Route::post('/user/{id}', 'UserController@update');
 
 // TASKS
-Route::get('/tasks/{id}', 'TaskController@index');
 Route::post('/tasks', 'TaskController@store');
+Route::get('/tasks/{id}', 'TaskController@index');
 Route::get('/task/{id}', 'TaskController@show');
 Route::post('/task/{id}', 'TaskController@update');
 Route::post('/task/{id}/delete', 'TaskController@destroy');
@@ -38,4 +41,5 @@ Route::post('/class/{id}/delete', 'ClassroomController@destroy');
 Route::post('/class/{id}/student/add', 'ClassroomController@addStudent');
 Route::post('/class/{id}/student/delete', 'ClassroomController@deleteStudent');
 
-
+// QUOTE
+Route::get('/quotes', 'QuoteController@index');
