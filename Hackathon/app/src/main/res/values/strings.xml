@@ -27,14 +27,18 @@
 
     <!-- Add Tasks -->
     <string name="task_name">Task Name</string>
-    <string name="due_date">Due Date and Time</string>
+    <string name="task_date">Task Date Schedule</string>
+    <string name="task_time">Task Time Schedule</string>
     <string name="content">Task Description</string>
     <string name="add_task">Add Task</string>
-    <string name="browse_date">Select Date</string>
-    <string name="browse_time">Select Time</string>
+    <string name="browse_date">Select Date </string>
+    <string name="browse_time">Select Time </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+<<<<<<< HEAD
+    <string name="add_task_btn">+ Add Task</string>
+=======
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
@@ -108,6 +112,7 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+>>>>>>> 93f7aa9a8c0f3f4c7e36012ff87144655b98a326
 
     <string name="hello_world">Hello world!</string>
 
