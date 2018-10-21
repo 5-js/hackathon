@@ -112,6 +112,7 @@
                 android:background="@color/LazyPush"
                 android:textColor="@color/white"
                 android:layout_marginTop="24dp"
+                android:onClick="addTask"
             />
         </LinearLayout>
     </ScrollView>
