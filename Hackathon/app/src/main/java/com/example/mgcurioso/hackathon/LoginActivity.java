@@ -62,6 +62,10 @@ public class LoginActivity extends AppCompatActivity implements Api.OnRespondLis
                 }
             }
         });
+
+        if (User.didLogout(this)) {
+            Snackbar.make(cardBtn, "Logout successfully.", Snackbar.LENGTH_LONG).show();
+        }
     }
 
     public void next() {
@@ -85,6 +89,7 @@ public class LoginActivity extends AppCompatActivity implements Api.OnRespondLis
 
     @Override
     public void onException(JSONException e) {
+        Log.d("tagX", e.getMessage());
         Snackbar.make(cardBtn, "An error occurred.", Snackbar.LENGTH_LONG).show();
     }
 }

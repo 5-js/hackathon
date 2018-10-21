@@ -33,7 +33,7 @@ public final class User {
         this.date = json.getString("date");
         this.time = json.getString("time");
         this.datetime = json.getString("datetime");
-        this.humanTime = json.getString("humanTime");
+        this.humanTime = json.getString("human_time");
     }
 
     public int getId() {

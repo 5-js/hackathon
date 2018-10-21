@@ -21,7 +21,6 @@ public final class Task {
     private String title;
     private String content;
     private String dueDate;
-    private String dueHuman;
     private String date;
     private String time;
     private String datetime;
@@ -33,7 +32,6 @@ public final class Task {
         this.title = json.getString("title");
         this.status = json.getInt("status");
         this.dueDate= json.getString("due_date");
-        this.dueHuman = json.getString("due_human");
         this.date = json.getString("date");
         this.time = json.getString("time");
         this.datetime = json.getString("datetime");
@@ -55,10 +53,6 @@ public final class Task {
 
     public String getDueDate() {
         return dueDate;
-    }
-
-    public String getDueHuman() {
-        return dueHuman;
     }
 
     public String getDate() {

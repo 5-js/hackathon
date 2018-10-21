@@ -80,11 +80,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // if fragment not set
         // use default fragment (should depend on role)
         setFragment(CURR_FRAGMENT != null ? CURR_FRAGMENT : new StudentFragment());
+
+        // if did log in
+        if (User.didLogin(this)) {
+            Snackbar.make(fab, "Login successfully.", Snackbar.LENGTH_LONG).show();
+        }
     }
 
     private void back() {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
+    }
+
+    private void logout() {
+        User.removeSavedUser(this);
+        back();
     }
 
     @Override
@@ -140,9 +150,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(MainActivity.this, SettingsActivity.class));
         } else if (id == R.id.nav_logout) {
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            finish();
-
+            logout();
         } else {
             Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show();
         }
