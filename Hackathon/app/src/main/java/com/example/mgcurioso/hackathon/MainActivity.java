@@ -22,10 +22,15 @@ import com.android.volley.VolleyError;
 import com.example.mgcurioso.hackathon.fragments.StudentFragment;
 import com.example.mgcurioso.hackathon.fragments.TasksFragment;
 import com.example.mgcurioso.hackathon.interfaces.Titlable;
+import com.example.mgcurioso.hackathon.items.Task;
+import com.example.mgcurioso.hackathon.items.User;
 import com.example.mgcurioso.hackathon.utils.Api;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, Api.OnRespondListener, StudentFragment.OnFragmentInteractionListener {
 
@@ -34,6 +39,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // check if user exists
+        User user = null;
+        try {
+            user = User.getSavedUser(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (user == null) {
+            back();
+            return;
+        }
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,6 +80,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // if fragment not set
         // use default fragment (should depend on role)
         setFragment(CURR_FRAGMENT != null ? CURR_FRAGMENT : new StudentFragment());
+    }
+
+    private void back() {
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
     @Override
@@ -109,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_allowance) {
             newFragment = new StudentFragment();
         } else if (id == R.id.nav_achievements) {
-            newFragment = new StudentFragment();
+            startActivity(new Intent(MainActivity.this, NotificationActivity.class));
         } else if (id == R.id.nav_classes) {
             startActivity(new Intent(MainActivity.this, Classes.class));
             /* startActivity(new Intent(MainActivity.this, UsageStat.class)); */
@@ -167,9 +191,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onResponse(String tag, JSONObject response) throws JSONException {
-        // set ArrayAdapter Value
+        final ArrayList<Task> list = new ArrayList<>();
 
-        Log.d("tagX", "onErrorResponse: ");
+        if (tag.equals("fetchTasks")) {
+            Log.d("tagX", "fetchTasks");
+            final JSONArray jsonTasks = response.getJSONArray("tasks");
+            for (int i = 0; i < jsonTasks.length(); i++) {
+                final Task task = new Task(jsonTasks.getJSONObject(i));
+                list.add(task);
+                Log.d("tagX", "added task");
+            }
+
+            // put this to fragment
+            // assert that curr frag is tasksFrag
+            Log.d("tagX", "setToData");
+            ((TasksFragment) CURR_FRAGMENT).setData(list);
+            Log.d("tagX", "didSetToData");
+        }
     }
 
     @Override
@@ -180,6 +218,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onException(JSONException e) {
         e.printStackTrace();
-
+        Log.d("tagX", e.getMessage());
     }
 }
