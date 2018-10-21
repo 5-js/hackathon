@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_allowance) {
             newFragment = new StudentFragment();
         } else if (id == R.id.nav_achievements) {
-            newFragment = new StudentFragment();
+            startActivity(new Intent(MainActivity.this, NotificationActivity.class));
         } else if (id == R.id.nav_classes) {
             startActivity(new Intent(MainActivity.this, Classes.class));
             /* startActivity(new Intent(MainActivity.this, UsageStat.class)); */
