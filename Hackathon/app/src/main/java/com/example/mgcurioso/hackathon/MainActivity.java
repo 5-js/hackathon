@@ -23,10 +23,14 @@ import com.android.volley.VolleyError;
 import com.example.mgcurioso.hackathon.fragments.StudentFragment;
 import com.example.mgcurioso.hackathon.fragments.TasksFragment;
 import com.example.mgcurioso.hackathon.interfaces.Titlable;
+import com.example.mgcurioso.hackathon.items.Task;
 import com.example.mgcurioso.hackathon.utils.Api;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, Api.OnRespondListener, StudentFragment.OnFragmentInteractionListener {
 
@@ -167,10 +171,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onResponse(String tag, JSONObject response) throws JSONException {
-        /*Toast.makeText(this, response.toString(), Toast.LENGTH_LONG).show();*/
-        Toast.makeText(this, "asd", Toast.LENGTH_LONG).show();
+        final ArrayList<Task> list = new ArrayList<>();
 
-        Log.d("tagX", "onErrorResponse: ");
+        if (tag.equals("fetchTasks")) {
+            Log.d("tagX", "fetchTasks");
+            final JSONArray jsonTasks = response.getJSONArray("tasks");
+            for (int i = 0; i < jsonTasks.length(); i++) {
+                final Task task = new Task(jsonTasks.getJSONObject(i));
+                list.add(task);
+                Log.d("tagX", "added task");
+            }
+
+            // put this to fragment
+            // assert that curr frag is tasksFrag
+            Log.d("tagX", "setToData");
+            ((TasksFragment) CURR_FRAGMENT).setData(list);
+            Log.d("tagX", "didSetToData");
+        }
     }
 
     @Override
@@ -181,6 +198,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onException(JSONException e) {
         e.printStackTrace();
-
+        Log.d("tagX", e.getMessage());
     }
 }

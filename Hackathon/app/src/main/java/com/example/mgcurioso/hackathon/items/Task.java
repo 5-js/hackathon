@@ -17,28 +17,28 @@ import org.json.JSONObject;
 import java.util.List;
 
 public final class Task {
-    private int id;
     private int status;
     private String title;
     private String content;
     private String dueDate;
-    private String createdAt;
-    private String updatedAt;
+    private String dueHuman;
+    private String date;
+    private String time;
+    private String datetime;
+    private String humanTime;
     private JSONObject json;
 
     public Task(JSONObject json) throws JSONException {
         this.json = json;
-        this.id = json.getInt("id");
         this.title = json.getString("title");
         this.status = json.getInt("status");
-        this.dueDate= json.getString("dueDate");
-        this.createdAt = json.getString("created_at");
-        this.updatedAt = json.getString("updated_at");
+        this.dueDate= json.getString("due_date");
+        this.dueHuman = json.getString("due_human");
+        this.date = json.getString("date");
+        this.time = json.getString("time");
+        this.datetime = json.getString("datetime");
+        this.humanTime = json.getString("human_time");
         this.content = json.getString("content");
-    }
-
-    public int getId() {
-        return id;
     }
 
     public int getStatus() {
@@ -57,12 +57,24 @@ public final class Task {
         return dueDate;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public String getDueHuman() {
+        return dueHuman;
     }
 
-    public String getUpdatedAt() {
-        return updatedAt;
+    public String getDate() {
+        return date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public String getHumanTime() {
+        return humanTime;
     }
 
     public JSONObject getJson() {
