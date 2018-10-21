@@ -7,13 +7,15 @@ use Auth;
 use App\Traits\API;
 use App\Task;
 use App\Classroom;
+use App\Http\Resources\Task as TaskResource;
+
 class TaskController extends Controller
 {
     use API;
 
     public function index($id)
     {
-        return $this->respond([ 'tasks' => Task::where('user_id',$id)->latest()->get()], 'ok');
+        return $this->respond([ 'tasks' => TaskResource::collection(Task::where('user_id',$id)->latest()->get())], 'ok');
     }
 
     public function store(Request $request)
@@ -21,20 +23,52 @@ class TaskController extends Controller
         
         $request->validate(Task::rules());
 
-        return $this->respond(['task' => Task::create([
-            'title'    => $request->title, 
-            'content'  => $request->content, 
-            'due_date' => $request->due_date, 
-            'class_id' => $request->has('class_id')? $request->class_id : null, 
-            'user_id'  => Auth::id()
-        ])], 'created');
+        if ($request->has('class_id')) {
+            $class = Classroom::find($request->class_id);
+
+            foreach($class->students as $student){
+                $task = Task::create([
+                    'title'    => $request->title, 
+                    'content'  => $request->content, 
+                    'due_date' => $request->due_date, 
+                    'class_id' => $request->class_id, 
+                    'user_id'  => $student->id
+                ]);
+            }
+        } else {
+            $task = Task::create([
+                'title'    => $request->title, 
+                'content'  => $request->content, 
+                'due_date' => $request->due_date, 
+                'class_id' => null, 
+                'user_id'  => Auth::id()
+            ]);
+        }
+
+        return $this->respond(['task' => new TaskResource($task)], 'created');
+    }
+
+    public function changeStatus($id, Request $request)
+    {
+        if (!$this->taskExists($id))
+            return $this->respond([ 'message'  => 'Whoops, task not found!'], 'not_found');
+        
+        $check = Task::find($id);
+        if ($check->class_id != null && $check->user_id == Auth::id())
+            return $this->respond(['message' => 'You are not authorized to perform this action!'], 'forbidden');    
+
+        Task::where('id',$id)->update([
+            'status' => $request->status
+        ]);
+        
+        return $this->respond(['message' => 'Task has been updated'], 'done');
     }
 
     public function show($id)
     {
         if ( !$this->taskExists($id) )
             return $this->respond([ 'message'  => 'Whoops, task not found!'], 'not_found');
-        return $this->respond(['task' => Task::find($id)], 'ok');
+        return $this->respond(['task' => new TaskResource(Task::find($id))], 'ok');
     }
 
     public function update(Request $request, $id)
