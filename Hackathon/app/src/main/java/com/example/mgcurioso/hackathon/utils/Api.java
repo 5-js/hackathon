@@ -80,6 +80,10 @@ public final class Api {
         return this;
     }
 
+    public JsonObjectRequest request() {
+        return request(null);
+    }
+
     public JsonObjectRequest request(JSONObject params) {
         final Api api = this;
 

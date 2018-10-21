@@ -15,64 +15,104 @@
             android:orientation="vertical"
             android:padding="20dp"
         >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/task_name"
-            />
-
-            <EditText
-                android:id="@+id/task_name"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-            />
+                android:layout_height="wrap_content">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/task_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="@string/task_name"
+                />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:layout_marginTop="14dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/content"
-            />
-
-            <EditText
-                android:id="@+id/task_desc"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:lines="4" />
+                android:layout_height="wrap_content">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/task_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:hint="@string/content"
+                    />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:layout_marginTop="14dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/due_date"
-            />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
             >
-                <EditText
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                />
+
                 <Button
+                    android:id="@+id/browseDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/browse_date"
+                    android:drawableEnd="@android:drawable/arrow_down_float"
+                    android:background="@color/LazyPush"
+                    android:textColor="@color/white"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                />
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Browse Date"
-                />
+                    android:paddingLeft="16dp"
+                    >
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/task_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:hint="@string/task_date"/>
+                </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
-            <!--<DatePicker
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/browseTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/browse_time"
+                    android:drawableEnd="@android:drawable/arrow_down_float"
+                    android:background="@color/LazyPush"
+                    android:textColor="@color/white"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                />
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                >
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/task_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:hint="@string/task_time"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/add_task_btn"
+                android:background="@color/LazyPush"
+                android:textColor="@color/white"
+                android:layout_marginTop="24dp"
             />
-            <TimePicker
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-            />-->
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
