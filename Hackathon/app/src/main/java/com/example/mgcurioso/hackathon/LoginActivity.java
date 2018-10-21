@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements Api.OnRespondLis
 
     @Override
     public void onErrorResponse(String tag, VolleyError error) throws JSONException {
-        Snackbar.make(cardBtn, "Unable to login.", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(cardBtn, "Incorrect username or password.", Snackbar.LENGTH_LONG).show();
     }
 
     @Override
