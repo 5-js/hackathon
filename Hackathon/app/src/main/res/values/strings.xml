@@ -36,13 +36,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-<<<<<<< HEAD
 
     <string name="add_task_btn">+ Add Task</string>
-    =======
-=======
-    <string name="add_task_btn">+ Add Task</string>
->>>>>>> 907fb2f79f957bf1856ba4c91e51982e234c34c5
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
@@ -116,10 +111,6 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-<<<<<<< HEAD
-    >>>>>>> 93f7aa9a8c0f3f4c7e36012ff87144655b98a326
-=======
->>>>>>> 907fb2f79f957bf1856ba4c91e51982e234c34c5
 
     <string name="hello_world">Hello world!</string>
 
