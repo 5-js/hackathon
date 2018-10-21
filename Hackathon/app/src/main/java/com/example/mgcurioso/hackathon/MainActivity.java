@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_achievements) {
             newFragment = new StudentFragment();
         } else if (id == R.id.nav_classes) {
-            newFragment = new StudentFragment();
+            startActivity(new Intent(MainActivity.this, UsageStat.class));
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(MainActivity.this, SettingsActivity.class));
         } else if (id == R.id.nav_logout) {
