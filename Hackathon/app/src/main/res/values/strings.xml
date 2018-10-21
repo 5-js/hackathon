@@ -27,13 +27,15 @@
 
     <!-- Add Tasks -->
     <string name="task_name">Task Name</string>
-    <string name="due_date">Due Date and Time</string>
+    <string name="task_date">Task Date Schedule</string>
+    <string name="task_time">Task Time Schedule</string>
     <string name="content">Task Description</string>
     <string name="add_task">Add Task</string>
-    <string name="browse_date">Select Date</string>
-    <string name="browse_time">Select Time</string>
+    <string name="browse_date">Select Date </string>
+    <string name="browse_time">Select Time </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_task_btn">+ Add Task</string>
 
 </resources>

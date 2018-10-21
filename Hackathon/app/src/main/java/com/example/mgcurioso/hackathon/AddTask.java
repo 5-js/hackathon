@@ -5,8 +5,8 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
@@ -14,7 +14,7 @@ import java.util.Calendar;
 
 public class AddTask extends AppCompatActivity implements View.OnClickListener{
 
-    CardView     btnDatePicker, btnTimePicker;
+    Button btnDatePicker, btnTimePicker;
     TextInputEditText taskName, taskDesc, taskDate, taskTime;
 
     private int mYear, mMonth, mDay, mHour, mMinute;
